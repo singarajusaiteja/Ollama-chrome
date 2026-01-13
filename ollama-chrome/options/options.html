@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Assistant Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                        <line x1="9" y1="9" x2="9.01" y2="9" />
+                        <line x1="15" y1="9" x2="15.01" y2="9" />
+                    </svg>
+                </div>
+                <div>
+                    <h1>Ollama Assistant</h1>
+                    <p>Configure your AI assistant settings</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Connection Settings -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                            <path d="M2 12h20" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Connection</h2>
+                        <p>Configure your Ollama server connection</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="ollamaUrl">Ollama Server URL</label>
+                        <div class="input-group">
+                            <input type="url" id="ollamaUrl" placeholder="http://localhost:11434"
+                                value="http://localhost:11434">
+                            <button class="btn btn-secondary" id="testConnectionBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                Test
+                            </button>
+                        </div>
+                        <span class="form-hint">Default: http://localhost:11434</span>
+                    </div>
+
+                    <div class="connection-status" id="connectionStatus">
+                        <div class="status-indicator"></div>
+                        <span class="status-text">Not tested</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Model Settings -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Model</h2>
+                        <p>Select your default AI model</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="defaultModel">Default Model</label>
+                        <select id="defaultModel">
+                            <option value="">Select a model...</option>
+                        </select>
+                        <span class="form-hint">This model will be used for all AI interactions</span>
+                    </div>
+
+                    <div class="model-list" id="modelList">
+                        <div class="model-list-header">
+                            <span>Available Models</span>
+                            <button class="btn btn-icon" id="refreshModelsBtn" title="Refresh models">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 4 23 10 17 10" />
+                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="model-items" id="modelItems">
+                            <div class="model-empty">No models found. Make sure Ollama is running.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Behavior Settings -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Behavior</h2>
+                        <p>Customize how the assistant works</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="systemPrompt">System Prompt</label>
+                        <textarea id="systemPrompt" rows="4"
+                            placeholder="You are a helpful AI assistant...">You are a helpful AI assistant. Be concise and clear in your responses. When analyzing web pages, focus on the most important information.</textarea>
+                        <span class="form-hint">This prompt guides the AI's behavior and personality</span>
+                    </div>
+
+                    <div class="toggle-group">
+                        <label class="toggle-item">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Include page context by default</span>
+                                <span class="toggle-desc">Automatically include current page content in
+                                    conversations</span>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="defaultPageContext" checked>
+                                <span class="slider"></span>
+                            </div>
+                        </label>
+
+                        <label class="toggle-item">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Show floating button on selection</span>
+                                <span class="toggle-desc">Display a quick action button when text is selected</span>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="showFloatingButton" checked>
+                                <span class="slider"></span>
+                            </div>
+                        </label>
+
+                        <label class="toggle-item">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Stream responses</span>
+                                <span class="toggle-desc">Show AI responses as they're generated (recommended)</span>
+                            </div>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="streamResponses" checked>
+                                <span class="slider"></span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>About</h2>
+                        <p>Ollama Assistant v1.0.0</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="about-links">
+                        <a href="https://ollama.com" target="_blank" class="about-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="2" y1="12" x2="22" y2="12" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                            Ollama Website
+                        </a>
+                        <a href="https://github.com/ollama/ollama" target="_blank" class="about-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Save Button -->
+        <div class="save-bar">
+            <div class="save-bar-content">
+                <span class="save-status" id="saveStatus"></span>
+                <button class="btn btn-primary" id="saveBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                        <polyline points="17 21 17 13 7 13 7 21" />
+                        <polyline points="7 3 7 8 15 8" />
+                    </svg>
+                    Save Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>

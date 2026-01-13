@@ -1,0 +1,58 @@
+/* Floating Action Button */
+.ollama-float-btn {
+  position: fixed;
+  z-index: 2147483647;
+  /* Max z-index */
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  /* Slightly rounded squares like Claude */
+  background: #f0eee6;
+  /* Warm beige */
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Softer shadow */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  margin: 0;
+  color: #da7756;
+  /* Terracotta accent */
+  font-family: system-ui, -apple-system, sans-serif;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: floatIn 0.2s forwards;
+}
+
+.ollama-float-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: #da7756;
+}
+
+.ollama-float-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes floatIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Selection Hightlight (optional overrides) */
+::selection {
+  background: rgba(218, 119, 86, 0.2);
+  color: inherit;
+}
