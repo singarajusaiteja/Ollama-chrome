@@ -1,5 +1,6 @@
 # Ollama-chrome
 **Ollama-chrome** is similar to **"Claude for chrome"** but with minimum features like page summarization, explain the page etc. 
+Built entirely with **Antigravity**.
 
 ---
 
@@ -12,3 +13,8 @@
 - Then click on **Load Unpackaged**
 - and upload the **project folder**
 - then open terminal and type **Ollama serve**, and you can start chatting
+
+---
+
+# Purpose
+- Purpose of this project is simply to experiement with vibe coding and open source models to create something useful.
