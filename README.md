@@ -16,5 +16,11 @@ Built entirely with **Antigravity**.
 
 ---
 
+# Video Instructions 👇
+
+[![Watch the video]](https://youtu.be/_e20ZYgQ_fc?si=kViVPUl74jk1IPqm)
+
+---
+
 # Purpose
 - Purpose of this project is simply to experiement with vibe coding and open source models to create something useful.
